@@ -1,0 +1,20 @@
+{%  extends 'base.html' %}
+{%  block content %}
+<div class="topAnimes">
+	{{q["err"]}}
+  {%  for manga in q["data"]  %}
+    <a href="/manga?id={{manga['id']}}&name={{manga['title']}}&img={{manga['img']}}"><button class="cardBtn"><div class="animeCard">
+          <div class="cardBody">
+            <img src="{{manga['img']}}" alt="file not found">
+            <div class="cardText">
+              <h2 class="cardTitle" style="font-weight: bolder">{{manga['title']}}</h2>
+            </div>
+          </div>
+        </div></button></a>
+  {%  endfor  %}
+</div>
+
+<script>
+
+</script>
+{%  endblock  %}
