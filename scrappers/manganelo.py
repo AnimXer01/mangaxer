@@ -12,7 +12,7 @@ class manganelo:
     html = soup.select(".panel-search-story .search-story-item")
     data = '{"data": ['
     for item in html:
-      img = "https://ww5.manganelo.tv/"+item.find("img")["src"]
+      img = "https://ww5.manganelo.tv"+item.find("img")["src"]
       title = item.find("img")["alt"]
       link = item.find("a")["href"].replace("/manga/","")
       info = "{" + f'"img" :"{img}", "title": "{title}", "id": "{link}"'+ "},"
@@ -28,7 +28,7 @@ class manganelo:
 
   # returns all chapters name and list from mangaLink
   def getChapters(link): 
-    r = requests.get("https://ww5.manganelo.tv/"+link).text
+    r = requests.get("https://ww5.manganelo.tv/manga/"+link).text
     soup = bs(r, 'html.parser')
     html = soup.select("a.chapter-name")
     data = '{"data": ['
@@ -53,4 +53,3 @@ class manganelo:
 
 #print(manganelo.getManga("/chapter/manga-ng952689/chapter-1"))
 #print(getManga("https://ww5.manganelo.tv/chapter/manga-gi983965/chapter-6"))
-
